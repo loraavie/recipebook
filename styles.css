@@ -1,2 +1,37 @@
 <style>
+.nav-menu {
+  list-style:none;
+  padding: 0;
+  margin: 0;
+  background-color: pink;
+  text-align: center;
+  border-radius: 10px; 
+
+}
+.nav-menu li{
+	display:inline-block;
+    margin:30 20px;
+    border-radius: 15px; 
+    }
+.nav-menu li a{
+text-decoration:none;
+	color:white;
+    padding:10px 20px;
+    border-radius:40%;
+    transition: background-color 0.3;
+    font-family: Verdana, sans-serif;
+    }
+.nav-menu li a:hover  {
+
+	background-color:#e9967a;
+    }
+body {
+  background-color:#fff8dc;
+}
+
+h1 {
+  color: #f08080;
+  text-align: center;
+}
+
 </style>
