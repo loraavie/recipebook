@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, inital-scale=1.0">
+<title>Page Add Recipe</title>
+</head>
+<body>
+<h2>Add Recipe Area</h2>
+<form id="rname">
+	<label for="rname">Recipe Name:</label>
+    <br>
+    <input type="text" id="rname" name="rname">
+    <br>
+    </form>
+<form id="ingre">
+	<label for="ingre">Ingredients:</label>
+    <br>
+    <textarea id="ingre" name="ingre" rows="5" cols="50"></textarea>
+    <br>
+    </form>
+<form id="instruct">
+	<label for="instruct">Instructions:</label>
+    <br>
+    <textarea id="instruct"name="instruct"rows="5"cols="50"></textarea>
+    <br>
+    </form>
+    <button id="sumbitButton">Submit</button>
+</body>
+</html>
