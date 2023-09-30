@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>
+		jsPDF - Create PDFs with HTML5 JavaScript Library
+	</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+	</script>
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+	</script>
+    <style>
+    body {
+      background-color: #fff8dc;
+    }
+    
+    p.ex1 {
+      border: 1px solid white;
+      outline-style: dotted;
+      outline-color: #e9967a;
+      outline-width: medium;
+      color: #e9967a;
+      text-align: center;
+      font-size: x-large;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      color: #e9967a;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #submitButton {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #submitButton:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+
+<body>
+
+	<div class="container">
+  <p class="ex1">ADD Recipe</p>
+        <form id="recipeForm">
+          <label for="recipeName">Recipe Name:</label>
+          <input type="text" id="recipeName" name="recipeName" required><br><br>
+          
+          <label for="ingredients">Ingredients:</label>
+          <textarea id="ingredients" name="ingredients" rows="4" required></textarea><br><br>
+          
+          <label for="instructions">Instructions:</label>
+          <textarea id="instructions" name="instructions" rows="6" required></textarea><br><br>
+          <input type="button" value="Convert HTML to PDF"			
+          onclick="convertHTMLtoPDF()">
+ 
+        </form>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script type="text/javascript">
+          function convertHTMLtoPDF() {
+            const jsPDF = window.jspdf.jsPDF;
+            const inputElement1 = document.getElementById('recipeName');
+            const inputValue1 = inputElement1.value;
+        
+            const inputElement2 = document.getElementById('ingredients');
+            const inputValue2 = inputElement2.value;
+        
+            const inputElement3 = document.getElementById('instructions');
+            const inputValue3 = inputElement3.value;
+        
+            const doc = new jsPDF('l', 'mm', [297, 210]); // A4 size
+        
+            // Combine input values into a single string
+            const title = inputValue1 + '\n';
+            const ingredients= "Ingredients:\n"+ inputValue2;
+            const instructions= "\nInstructions: \n"+ inputValue3;
+
+          
+            doc.setFont('Helvetica', 'Bold');
+            doc.setFontSize(45);
+            doc.text( title, 10, 10);
+
+            doc.setFont('times', 'normal');
+            doc.setFontSize(18);
+            doc.text(ingredients, 20, 20);
+            doc.text(instructions, 20, 40 );
+
+            doc.save('recipe.pdf');
+          }
+        </script>
+        
+</body>
+</html>
