@@ -48,6 +48,20 @@
               h1 {
                 color: #f08080;
                 text-align: center;
+              }
+              {
+                color: #b34444;
+                border-radius: 0px;
+                border: 10px solid #f08080;
+                background-color: mistyrose;
+                margin-left: 30%;
+                margin-right: 30%;
+                padding: 10px;
+              }
+              .recipe h2{
+                font-size: 25px;
+                font-weight: bold;
+                text-align: center;
               }</style>
              
     </head>
@@ -148,11 +162,13 @@ function addTextToWebsite() {
 
     // Create a string containing the input text
     const textToAdd = `
+	<div class="recipe">
         <h2>${recipeName}</h2>
         <h3>Ingredients:</h3>
         <p>${ingredients}</p>
         <h3>Instructions:</h3>
         <p>${instructions}</p>
+	</div>
     `;
 
     // Append the new text to the existing text in the "displayText" div
