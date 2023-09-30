@@ -1,30 +1,167 @@
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset = "UTF-8">
-<meta name="viewport" content="width=device-width, inital-scale=1.0">
-<title>Page Add Recipe</title>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="UTF-8">
+        <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+        <title>Recipe Book</title>
+        	<script src=
+          "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+          	</script>
+	          <script src=
+            "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+          	</script>
+          	<script src=
+            "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+          	</script>
+          	<link rel="stylesheet" href="styles.css" />
+            <style>.nav-menu {
+                list-style:none;
+                padding: 0;
+                margin: 0;
+                background-color: pink;
+                text-align: center;
+                border-radius: 10px; 
+              
+              }
+              .nav-menu li{
+                  display:inline-block;
+                  margin:30 20px;
+                  border-radius: 15px; 
+                  }
+              .nav-menu li a{
+              text-decoration:none;
+                  color:white;
+                  padding:10px 20px;
+                  border-radius:40%;
+                  transition: background-color 0.3;
+                  font-family: Verdana, sans-serif;
+                  }
+              .nav-menu li a:hover  {
+              
+                  background-color:#e9967a;
+                  }
+              body {
+                background-color:#fff8dc;
+              }
+              
+              h1 {
+                color: #f08080;
+                text-align: center;
+              }</style>
+             
+    </head>
 <body>
-<h2>Add Recipe Area</h2>
-<form id="rname">
-	<label for="rname">Recipe Name:</label>
-    <br>
-    <input type="text" id="rname" name="rname">
-    <br>
-    </form>
-<form id="ingre">
-	<label for="ingre">Ingredients:</label>
-    <br>
-    <textarea id="ingre" name="ingre" rows="5" cols="50"></textarea>
-    <br>
-    </form>
-<form id="instruct">
-	<label for="instruct">Instructions:</label>
-    <br>
-    <textarea id="instruct"name="instruct"rows="5"cols="50"></textarea>
-    <br>
-    </form>
-    <button id="sumbitButton">Submit</button>
-</body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Recipes</title>
+    </head>
+    <body>
+        <h1>My Recipes</h1>
+        
+        <!-- Recipe Name Form -->
+        <form id="recipeNameForm">
+            <label for="recipeName">Recipe Name:</label>
+            <br>
+            <input type="text" id="recipeNameInput" name="rname">
+            <br>
+        </form>
+    
+        <!-- Ingredients Form -->
+        <form id="ingredientsForm">
+            <label for="ingredients">Ingredients:</label>
+            <br>
+            <textarea id="ingredientsInput" name="ingre" rows="5" cols="50"></textarea>
+            <br>
+        </form>
+    
+        <!-- Instructions Form -->
+        <form id="instructionsForm">
+            <label for="instructions">Instructions:</label>
+            <br>
+            <textarea id="instructionsInput" name="instruct" rows="5" cols="50"></textarea>
+            <br>
+        </form>
+    
+        <!-- Button to Add Text to Website -->
+        <input type="button" id="button" value="Add Text to Website" onclick="addTextToWebsite()" onclick="addRecipe()">
+        <input type="button" value="Convert HTML to PDF"			
+        onclick="convertHTMLtoPDF()">
+        <input type="button" id="addButton" value="Update Recipes List" onclick="renderRecipes()">
+        <!-- Div to Display Added Text -->
+        <div id="displayText"></div>
+    
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="pdftest.html">My Recipes</a></li>
+<li><a href="#">Add Recipe</a></li>
+<li><a href="#">Share Recipe</a></li>
+<li><a href="#">About</a></li>
+</ul>
+</nav>
+<img src="image-url.jpg" alt="Image Description">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script type="text/javascript">
+          function convertHTMLtoPDF() {
+            const jsPDF = window.jspdf.jsPDF;
+            const inputElement1 = document.getElementById('recipeNameInput');
+            const inputValue1 = inputElement1.value;
+        
+            const inputElement2 = document.getElementById('ingredientsInput');
+            const inputValue2 = inputElement2.value;
+        
+            const inputElement3 = document.getElementById('instructionsInput');
+            const inputValue3 = inputElement3.value;
+        
+            const doc = new jsPDF('l', 'mm', [297, 210]); // A4 size
+        
+            // Combine input values into a single string
+            const title = inputValue1 + '\n';
+            const ingredients= "Ingredients:\n"+ inputValue2;
+            const instructions= "\nInstructions: \n"+ inputValue3;
+
+          
+            doc.setFont('Helvetica', 'Bold');
+            doc.setFontSize(45);
+            doc.text( title, 10, 10);
+
+            doc.setFont('times', 'normal');
+            doc.setFontSize(18);
+            doc.text(ingredients, 20, 20);
+            doc.text(instructions, 20, 40 );
+
+            doc.save('recipe.pdf');
+          }
+ 
+function addTextToWebsite() {
+    // Get the input values
+    const recipeName = document.getElementById("recipeNameInput").value;
+    const ingredients = document.getElementById("ingredientsInput").value;
+    const instructions = document.getElementById("instructionsInput").value;
+
+    // Create a string containing the input text
+    const textToAdd = `
+        <h2>${recipeName}</h2>
+        <h3>Ingredients:</h3>
+        <p>${ingredients}</p>
+        <h3>Instructions:</h3>
+        <p>${instructions}</p>
+    `;
+
+    // Append the new text to the existing text in the "displayText" div
+    const displayTextDiv = document.getElementById("displayText");
+    displayTextDiv.innerHTML += textToAdd;
+
+    // Clear the input fields
+    document.getElementById("recipeNameInput").value = "";
+    document.getElementById("ingredientsInput").value = "";
+    document.getElementById("instructionsInput").value = "";
+}
 </html>
