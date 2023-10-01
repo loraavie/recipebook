@@ -10,13 +10,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        body {
+      body {
             border: 5px solid #cd853f;
             padding: 10px;
             background-color: #faf0e6;
             width: 99%;
             height: 92vh;
             margin: 0 auto; 
+            min-height: 100 auto;
         }
 
         .nav-menu {
@@ -96,7 +97,22 @@
         #submitButton:hover {
             background-color: #2980b9;
         }
-                    .recipe {
+
+        #submitButton {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submitButton:hover {
+            background-color: #2980b9;
+        }
+                    #card {
                 color: #b34444;
                 border-radius: 0px;
                 border: 10px solid #f08080;
@@ -105,18 +121,24 @@
                 margin-right: 30%;
                 padding: 10px;
               }
-              .recipe h2{
+              #card h2{
                 font-size: 25px;
                 font-weight: bold;
                 text-align: center;
               }
-              .edit{
+              #edit{
                 margin-left: 30%;
                 margin-right: 30%;
               }
-              .delete{
+              #delete{
                 margin-left: 30%;
                 margin-right: 30%;}
+                .addrecipe{
+        color: #f08080;
+                text-align: center;
+                font-family: Garamond;
+        }
+              </style>
     </style>
 </head>
 
@@ -127,8 +149,17 @@
         <title>My Recipes</title>
     </head>
     <body>
+
         <h1>My Recipes</h1>
-        
+        <nav>
+            <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipe.html">My Recipes</a></li>
+            <li><a href="recipe.html">Share</a></li>
+            <li><a href="about.html">About</a></li>
+            </ul>
+            </nav>
+        <h3 class="addrecipe">&#8595 Add Recipes Below &#8595</h3>
         <!-- Recipe Name Form -->
         <form id="recipeNameForm">
             <label for="recipeName">Recipe Name:</label>
@@ -165,16 +196,6 @@
     </body>
     </html>
     
-
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="pdftest.html">My Recipes</a></li>
-<li><a href="#">Add Recipe</a></li>
-<li><a href="#">Share Recipe</a></li>
-<li><a href="#">About</a></li>
-</ul>
-</nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
         <script type="text/javascript">
@@ -220,15 +241,18 @@ function addTextToWebsite() {
 
     // Create a string containing the input text
     const textToAdd = `
-        <div id= 'recipe'>
-        <h2>${recipeName}</h2>
-        <h3>Ingredients:</h3>
-        <p>${ingredients}</p>
-        <h3>Instructions:</h3>
-        <p>${instructions}</p>
-        <button id="edit" onClick='edit()'>Edit</button>
-        <button id="delete$" onClick="deleteContent()">Delete</button>
+        <div id='recipe'>
+            <div id="card">
+                <h2>${recipeName}</h2>
+                <h3>Ingredients:</h3>
+                <p>${ingredients}</p>
+                <h3>Instructions:</h3>
+                <p>${instructions}</p>
+            </div>
+            <button id="edit" onClick='edit()'>Edit</button>
+            <button id="delete" onClick="deleteContent()">Delete</button>
         </div>
+        
     `;
 
 
