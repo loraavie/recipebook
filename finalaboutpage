@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1 {
+            color: #e9967a;
+            text-align: center;
+            font-size: 30px;
+
+        }
+
+        h2 {
+            color: #e9967a;
+            font-size: 30px;
+        }
+
+        body {
+            background-color:#faf0e6 ;
+            border: 5px solid #cd853f; 
+            padding: 10px; 
+            width: 93%; 
+            height: 92vh;
+
+        
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 10px; 
+            border-radius: 10px;
+        }
+    </style>
+    <title>Page Title</title>
+</head>
+<body>
+    <header>
+        <h1>About Recipe Book Website!</h1>
+    </header>
+    <p>This is an info paragraph.</p>
+
+    <header> 
+        <h2>About Our Character!</h2>
+    </header>
+
+    <p>Info on mascot here, image too.</p>
+</body>
+</html>
