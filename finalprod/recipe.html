@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Create and Store Your Recipes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            border: 5px solid #cd853f;
+            padding: 10px;
+            background-color: #faf0e6;
+            width: 99%;
+            height: 92vh;
+            margin: 0 auto; 
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: pink;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .nav-menu li {
+            display: inline-block;
+            margin: 30px 30px;
+            border-radius: 15px;
+        }
+
+        .nav-menu li a {
+            text-decoration:none;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 20%;
+            transition: background-color 0.3s;
+            font-family: Avenir;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #e9967a;
+        }
+
+        h1 {
+            color: #f08080;
+            text-align: center;
+            font-family: Garamond;
+        }
+
+        p.ex1 {
+            border: 1px solid white;
+            outline-style: dotted;
+            outline-color: white;
+            outline-width: medium;
+            color: white;
+            text-align: center;
+            font-size: x-large;
+            margin-top: 20px;
+            background-color: #e9967a;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        label {
+            display: block;
+            color: #f08080;
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #submitButton {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submitButton:hover {
+            background-color: #2980b9;
+        }
+                    .recipe {
+                color: #b34444;
+                border-radius: 0px;
+                border: 10px solid #f08080;
+                background-color: mistyrose;
+                margin-left: 30%;
+                margin-right: 30%;
+                padding: 10px;
+              }
+              .recipe h2{
+                font-size: 25px;
+                font-weight: bold;
+                text-align: center;
+              }
+              .edit{
+                margin-left: 30%;
+                margin-right: 30%;
+              }
+              .delete{
+                margin-left: 30%;
+                margin-right: 30%;}
+    </style>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Recipes</title>
+    </head>
+    <body>
+        <h1>My Recipes</h1>
+        
+        <!-- Recipe Name Form -->
+        <form id="recipeNameForm">
+            <label for="recipeName">Recipe Name:</label>
+            <br>
+            <input type="text" id="recipeNameInput" name="rname">
+            <br>
+        </form>
+    
+        <!-- Ingredients Form -->
+        <form id="ingredientsForm">
+            <label for="ingredients">Ingredients:</label>
+            <br>
+            <textarea id="ingredientsInput" name="ingre" rows="5" cols="50"></textarea>
+            <br>
+        </form>
+    
+        <!-- Instructions Form -->
+        <form id="instructionsForm">
+            <label for="instructions">Instructions:</label>
+            <br>
+            <textarea id="instructionsInput" name="instruct" rows="5" cols="50"></textarea>
+            <br>
+        </form>
+    
+        <!-- Button to Add Text to Website -->
+        <input type="button" id="button" value="Add Text to Website" onclick="addTextToWebsite()" onclick="addRecipe()">
+        <input type="button" value="Convert HTML to PDF"			
+        onclick="convertHTMLtoPDF()">
+        <input type="button" id="addButton" value="Update Recipes List" onclick="renderRecipes()">
+        <!-- Div to Display Added Text -->
+        <div id="displayText"></div>
+    
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="pdftest.html">My Recipes</a></li>
+<li><a href="#">Add Recipe</a></li>
+<li><a href="#">Share Recipe</a></li>
+<li><a href="#">About</a></li>
+</ul>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script type="text/javascript">
+            const num = 1;
+            let div = document.getElementById('recipe');
+          function convertHTMLtoPDF() {
+            const jsPDF = window.jspdf.jsPDF;
+            const inputElement1 = document.getElementById('recipeNameInput');
+            const inputValue1 = inputElement1.value;
+        
+            const inputElement2 = document.getElementById('ingredientsInput');
+            const inputValue2 = inputElement2.value;
+        
+            const inputElement3 = document.getElementById('instructionsInput');
+            const inputValue3 = inputElement3.value;
+        
+            const doc = new jsPDF('l', 'mm', [297, 210]); // A4 size
+        
+            // Combine input values into a single string
+            const title = inputValue1 + '\n';
+            const ingredients= "Ingredients:\n"+ inputValue2;
+            const instructions= "\nInstructions: \n"+ inputValue3;
+
+          
+            doc.setFont('Helvetica', 'Bold');
+            doc.setFontSize(45);
+            doc.text( title, 10, 10);
+
+            doc.setFont('times', 'normal');
+            doc.setFontSize(18);
+            doc.text(ingredients, 20, 20);
+            doc.text(instructions, 20, 40 );
+
+            doc.save('recipe.pdf');
+          }
+ 
+function addTextToWebsite() {
+    // Get the input values
+    const recipeName = document.getElementById("recipeNameInput").value;
+    const ingredients = document.getElementById("ingredientsInput").value;
+    const instructions = document.getElementById("instructionsInput").value;
+
+
+    // Create a string containing the input text
+    const textToAdd = `
+        <div id= 'recipe'>
+        <h2>${recipeName}</h2>
+        <h3>Ingredients:</h3>
+        <p>${ingredients}</p>
+        <h3>Instructions:</h3>
+        <p>${instructions}</p>
+        <button id="edit" onClick='edit()'>Edit</button>
+        <button id="delete$" onClick="deleteContent()">Delete</button>
+        </div>
+    `;
+
+
+    // Append the new text to the existing text in the "displayText" div
+    const displayTextDiv = document.getElementById("displayText");
+    displayTextDiv.innerHTML += textToAdd;
+
+    num++;
+
+    // Clear the input fields
+    document.getElementById("recipeNameInput").value = "";
+    document.getElementById("ingredientsInput").value = "";
+    document.getElementById("instructionsInput").value = "";
+}
+function deleteContent(){
+    const element = document.getElementById("recipe");
+    element.remove();
+}
+
+function edit(){
+    const editor = `
+    <form id="recipeNameForm">
+            <label for="recipeName">Recipe Name:</label>
+            <br>
+            <input type="text" id="recipeNameInput" name="rname">
+            <br>
+        </form>
+    
+        <!-- Ingredients Form -->
+        <form id="ingredientsForm">
+            <label for="ingredients">Ingredients:</label>
+            <br>
+            <textarea id="ingredientsInput" name="ingre" rows="5" cols="50"></textarea>
+            <br>
+        </form>
+    
+        <!-- Instructions Form -->
+        <form id="instructionsForm">
+            <label for="instructions">Instructions:</label>
+            <br>
+            <textarea id="instructionsInput" name="instruct" rows="5" cols="50"></textarea>
+            <br>
+        </form>
+    
+        <!-- Button to Add Text to Website -->
+        <input type="button" id="button" value="Add Text to Website" onclick="addTextToWebsite()" onclick="addRecipe()">
+        <input type="button" value="Convert HTML to PDF"			
+        onclick="convertHTMLtoPDF()">
+        <input type="button" id="addButton" value="Update Recipes List" onclick="renderRecipes()">
+    `;
+
+}
+       
+
+</script>
+
+</body>
+
+</html>
