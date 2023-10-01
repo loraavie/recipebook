@@ -43,6 +43,24 @@ h1 {
   text-align: center;
   font-family:Garamond;
 }
+	.image-with-text {
+    display: flex;
+    align-items: center;
+}
+#card {
+                color: #b34444;
+                border-radius: 0px;
+                border: 10px solid #f08080;
+                background-color: mistyrose;
+                margin-left: 0%;
+                margin-right: 0%;
+                padding: 10px;
+              }
+              #card h2{
+                font-size: 25px;
+                font-weight: bold;
+                text-align: center;
+              }
 
 </style>
 </head>
@@ -57,6 +75,16 @@ h1 {
 
   </ul>
 </nav>
-<img src="image-url.jpg" alt="Image Description">
+<div class="image-with-text">
+    <img src="brownBearWelcome.png" alt="the character brown bear holding a welcome sign">
+    <div id='recipe'>
+        <div id="card">
+            <h2 id="recName">recipename</h2>
+            <h3 >Ingredients:</h3>
+            <p id="ingred">ingredients</p>
+            <h3>Instructions:</h3>
+            <p id="instruc">instructions</p>
+        </div>
+    </div>
 </body>
 </html>
