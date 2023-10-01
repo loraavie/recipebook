@@ -42,44 +42,71 @@
   border-radius: 10px; 
 
 }
-.nav-menu li{
-	display:inline-block;
-    margin:30 20px;
-    border-radius: 15px; 
-    }
-.nav-menu li a{
-text-decoration:none;
-	color:white;
-    padding:10px 20px;
-    border-radius:40%;
-    transition: background-color 0.3;
-    font-family:Avenir;
-    }
-.nav-menu li a:hover  {
+.nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: pink;
+            text-align: center;
+            border-radius: 10px;
+        }
 
-	background-color:#e9967a;
-    }
+        .nav-menu li {
+            display: inline-block;
+            margin: 30px 30px;
+            border-radius: 15px;
+        }
+
+        .nav-menu li a {
+            text-decoration:none;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 20%;
+            transition: background-color 0.3s;
+            font-family: Avenir;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #e9967a;
+        }
+.about{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 4%;
+    padding-bottom: 4%
+}
+.image-with-text {
+    display: flex;
+    align-items: center;
+}
+img{
+    max-height: 200px;
+}
     </style>
-    <title>Page Title</title>
+    <title>Flavorful Files</title>
 </head>
 <body>
     <header>
-        <h1>About Recipe Book Website!</h1>
+        <h1>About Flavorful Files</h1>
     </header>
     <nav>
   <ul class="nav-menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="recipe.html">My Recipes</a></li>
-    <li><a href="recipe.html">Share Recipe</a></li>
+    <li><a href="recipe.html">Share</a></li>
     <li><a href="about.html">About</a></li>
 
   </ul>
-    <p>This is an info paragraph.</p>
+    <p class="about">Welcome to Flavorful Files, your ultimate destination for all things culinary! We are passionate about preserving your paper recipes as fun digital recipe cards, or allow you to share them with your friends and family as PDFs.</p>
 
     <header> 
-        <h2>About Our Character!</h2>
+        <h2>About Our Mocha Bear!</h2>
     </header>
-
-    <p>Info on mascot here, image too.</p>
+    <div class="image-with-text">
+    <p class="about"> Our mascot is Mocha Bear. He is a popular cartoon character that is well known for cooking for his partner milk bear.
+        Cooking is his passion, so he makes the perfect mascot for Flavor files!
+    </p>
+    <img src="mocha.png">
+    </div>
 </body>
 </html>
