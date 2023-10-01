@@ -249,13 +249,13 @@ function addTextToWebsite() {
 
     // Create a string containing the input text
     const textToAdd = `
-        <div id='recipe'>
+       <div id='recipe'>
             <div id="card">
-                <h2>${recipeName}</h2>
-                <h3>Ingredients:</h3>
-                <p>${ingredients}</p>
+                <h2 id="recName">${recipeName}</h2>
+                <h3 >Ingredients:</h3>
+                <p id="ingred">${ingredients}</p>
                 <h3>Instructions:</h3>
-                <p>${instructions}</p>
+                <p id="instruc">${instructions}</p>
             </div>
             <button id="edit" onClick='edit()'>Edit</button>
             <button id="delete" onClick="deleteContent()">Delete</button>
@@ -280,39 +280,31 @@ function deleteContent(){
     element.remove();
 }
 
-function edit(){
-    const editor = `
-    <form id="recipeNameForm">
-            <label for="recipeName">Recipe Name:</label>
-            <br>
-            <input type="text" id="recipeNameInput" name="rname">
-            <br>
-        </form>
-    
-        <!-- Ingredients Form -->
-        <form id="ingredientsForm">
-            <label for="ingredients">Ingredients:</label>
-            <br>
-            <textarea id="ingredientsInput" name="ingre" rows="5" cols="50"></textarea>
-            <br>
-        </form>
-    
-        <!-- Instructions Form -->
-        <form id="instructionsForm">
-            <label for="instructions">Instructions:</label>
-            <br>
-            <textarea id="instructionsInput" name="instruct" rows="5" cols="50"></textarea>
-            <br>
-        </form>
-    
-        <!-- Button to Add Text to Website -->
-        <input type="button" id="button" value="Add Text to Website" onclick="addTextToWebsite()" onclick="addRecipe()">
-        <input type="button" value="Convert HTML to PDF"			
-        onclick="convertHTMLtoPDF()">
-        <input type="button" id="addButton" value="Update Recipes List" onclick="renderRecipes()">
-    `;
-
-}
+   function edit(){
+    const paragraph = document.getElementById("recName");
+    const rec = document.getElementById("ingred");
+    const instr = document.getElementById("instruc");
+            const editButton = document.getElementById("edit");
+            if (paragraph.contentEditable === "true") {
+                    // Disable editing
+                    paragraph.contentEditable = "false";
+                    paragraph.classList.remove("editing");
+                    rec.contentEditable = "false";
+                    rec.classList.remove("editing");
+                    instr.contentEditable = "false";
+                    instr.classList.remove("editing");
+                    editButton.innerText = "Edit";
+                } else {
+                    // Enable editing
+                    paragraph.contentEditable = "true";
+                    paragraph.classList.add("editing");
+                    rec.contentEditable = "true";
+                    rec.classList.add("editing");
+                    instr.contentEditable = "true";
+                    instr.classList.add("editing");
+                    editButton.innerText = "Save";
+                }
+   }  
        
 
 </script>
