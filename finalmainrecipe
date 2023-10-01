@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.nav-menu {
+  list-style:none;
+  padding: 2%;
+  margin: 0;
+  background-color: pink;
+  text-align: center;
+  border-radius: 10px; 
+
+}
+.nav-menu li{
+	display:inline-block;
+    margin:40 20px;
+    border-radius: 20px; 
+    }
+.nav-menu li a{
+text-decoration:none;
+	color:white;
+    padding:10px 80px;
+    border-radius:40%;
+    transition: background-color 0.3;
+    font-family:Avenir;
+    }
+.nav-menu li a:hover  {
+
+	background-color:#e9967a;
+    }
+body {
+            border: 5px solid #cd853f; 
+            padding: 10px; 
+            background-color:#faf0e6;
+            width: 93%; 
+            height: 92vh;
+
+        }
+
+
+h1 {
+  color: #f08080;
+  text-align: center;
+  font-family:Garamond;
+}
+
+</style>
+</head>
+<body>
+<h1>Recipe Book Website</h1>
+<nav>
+  <ul class="nav-menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">My Recipes</a></li>
+    <li><a href="#">Share Recipe</a></li>
+    <li><a href="#">About</a></li>
+
+  </ul>
+</nav>
+<img src="image-url.jpg" alt="Image Description">
+</body>
+</html>
